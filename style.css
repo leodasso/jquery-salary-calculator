@@ -1,0 +1,29 @@
+html {
+    font-family: sans-serif;
+    background-color: rgb(177, 177, 177);
+}
+
+.headline {
+    color: white;
+    background-color: rgb(219, 93, 20);
+    height: 44px;
+    font-size: 24px;
+    text-align: center;
+    padding: 40px;
+}
+
+.employeeCreator, .employeeList, .total {
+    margin-top: 24px;
+}
+
+.sleekTable {
+    border-style: solid;
+    border-color: black;
+    margin: 30px;
+    width: 90%;
+}
+
+.total {
+    text-align: right;
+    margin: 20px;
+}
