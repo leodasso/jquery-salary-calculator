@@ -1,6 +1,7 @@
 html {
     font-family: sans-serif;
     background-color: rgb(177, 177, 177);
+    text-color: rgb(27, 24, 24);
 }
 
 .headline {
@@ -16,11 +17,20 @@ html {
     margin-top: 24px;
 }
 
+.employeeCreator p {
+    text-align: center;
+
+}
+
 .sleekTable {
     border-style: solid;
     border-color: black;
     margin: 30px;
     width: 90%;
+}
+
+.sleekTable td {
+    background-color:  rgb(160, 160, 160);
 }
 
 .total {
