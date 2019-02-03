@@ -90,4 +90,19 @@ function refreshEmployeeTable() {
         const employee = employees[i];
         employeeTable.append(employee.generateTableHtml(i));
     }
+
+    // refresh the total value per month
+    let t = getMonthlyTotal();
+    t = usdFormatter.format(t);
+    $('#total').text(t);
+}
+
+// returns number
+function getMonthlyTotal() {
+
+    let yearlyTotal = 0;
+    for (let employee of employees) {
+        yearlyTotal += Number(employee.salary);
+    }
+    return yearlyTotal / 12;
 }
