@@ -8,10 +8,10 @@ class employee {
     }
 
     // returns the html to display this emlployee in a table
-    generateTableHtml() {
+    generateTableHtml(index) {
 
         return `
-        <tr class="employeeRow">
+        <tr class="employeeRow" data-index=${index}>
             <td>${this.firstName}</td>
             <td>${this.lastName}</td>
             <td>${this.id}</td>
@@ -64,8 +64,7 @@ function createEmployee() {
 function deleteEmployee() {
 
     let employeeElement = $(this).closest('.employeeRow');
-    console.log(employeeElement);
-    
+    console.log('selected employee at index', employeeElement.data('index'));
     
 }
 
@@ -75,7 +74,10 @@ function refreshEmployeeTable() {
     let employeeTable = $('#employeeTable');
     employeeTable.empty();
 
-    for (let employee of employees) {
-        employeeTable.append(employee.generateTableHtml());
+    // use the index to set a data attribute so we know which index
+    // in the employees array the html element relates to
+    for (let i = 0; i < employees.length; i++) {
+        const employee = employees[i];
+        employeeTable.append(employee.generateTableHtml(i));
     }
 }
