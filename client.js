@@ -10,13 +10,16 @@ class employee {
     // returns the html to display this emlployee in a table
     generateTableHtml(index) {
 
+        let formattedSalary = Number(this.salary);
+        formattedSalary = usdFormatter.format(formattedSalary);
+
         return `
         <tr class="employeeRow" data-index=${index}>
             <td>${this.firstName}</td>
             <td>${this.lastName}</td>
             <td>${this.id}</td>
             <td>${this.title}</td>
-            <td>${this.salary}</td>
+            <td>${formattedSalary}</td>
             <td><button class="deleteButton">X</button></td>
         </tr>`;
     }
@@ -29,6 +32,12 @@ let employees = [
     new employee("Maria", "Smith", 8854, "Rainmaker", 120000),
     new employee("Scott", "Blankenship", 5473, "Coffee Tester", 45000)
 ];
+
+const usdFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+})
 
 
 $(document).ready(onReady);
@@ -64,8 +73,9 @@ function createEmployee() {
 function deleteEmployee() {
 
     let employeeElement = $(this).closest('.employeeRow');
-    console.log('selected employee at index', employeeElement.data('index'));
-    
+    let RemovalIndex = employeeElement.data('index');
+    employees.splice(RemovalIndex, 1);
+    refreshEmployeeTable();
 }
 
 // Cycles through all the employees in the list, and refreshes the dom
