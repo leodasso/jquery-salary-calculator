@@ -11,13 +11,13 @@ class employee {
     generateTableHtml() {
 
         return `
-        <tr>
+        <tr class="employeeRow">
             <td>${this.firstName}</td>
             <td>${this.lastName}</td>
             <td>${this.id}</td>
             <td>${this.title}</td>
             <td>${this.salary}</td>
-            <td><button>X</button></td>
+            <td><button class="deleteButton">X</button></td>
         </tr>`;
     }
 }
@@ -36,6 +36,7 @@ $(document).ready(onReady);
 function onReady() {
     refreshEmployeeTable();
     $('#addEmployee').on('click', createEmployee);
+    $('#employeeTable').on('click', '.deleteButton', deleteEmployee);
 }
 
 // creates a new employee using the inputs on the page
@@ -58,6 +59,14 @@ function createEmployee() {
     salary.val('');
 
     refreshEmployeeTable();
+}
+
+function deleteEmployee() {
+
+    let employeeElement = $(this).closest('.employeeRow');
+    console.log(employeeElement);
+    
+    
 }
 
 // Cycles through all the employees in the list, and refreshes the dom
