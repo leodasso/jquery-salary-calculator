@@ -19,7 +19,7 @@ class employee {
             <td>${this.lastName}</td>
             <td>${this.id}</td>
             <td>${this.title}</td>
-            <td>${formattedSalary}</td>
+            <td class="salary">${formattedSalary}</td>
             <td><button class="deleteButton">X</button></td>
         </tr>`;
     }
