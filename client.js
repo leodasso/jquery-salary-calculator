@@ -1,5 +1,3 @@
-console.log('js');
-
 class employee {
     constructor(firstName, lastName, id, title, salary) {
         this.firstName = firstName;
@@ -36,20 +34,30 @@ let employees = [
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('javascript is ready');
     refreshEmployeeTable();
-    
+    $('#addEmployee').on('click', createEmployee);
 }
 
 // creates a new employee using the inputs on the page
 function createEmployee() {
 
-    let firstName = $('');
-    let lastName;
-    let id;
-    let title;
-    let salary;
+    let firstName = $('#firstName');
+    let lastName = $('#lastName');
+    let id = $('#id');
+    let title = $('#title');
+    let salary = $('#salary');
 
+    let newEmployee = new employee(firstName.val(), lastName.val(), id.val(), title.val(), salary.val());
+    employees.push(newEmployee);
+    
+    // clear the values of the input fields
+    firstName.val('');
+    lastName.val('');
+    id.val('');
+    title.val('');
+    salary.val('');
+
+    refreshEmployeeTable();
 }
 
 // Cycles through all the employees in the list, and refreshes the dom
@@ -58,7 +66,7 @@ function refreshEmployeeTable() {
     let employeeTable = $('#employeeTable');
     employeeTable.empty();
 
-    for (employee of employees) {
+    for (let employee of employees) {
         employeeTable.append(employee.generateTableHtml());
     }
 }
