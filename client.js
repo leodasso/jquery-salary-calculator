@@ -46,7 +46,23 @@ function onReady() {
     refreshEmployeeTable();
     $('#addEmployee').on('click', createEmployee);
     $('#employeeTable').on('click', '.deleteButton', deleteEmployee);
+
+    // mouse enter/leave events for the employee creator panel
+    $('.employeeCreator').on('mouseenter', employeeCreatorHovered);
+    $('.employeeCreator').on('mouseleave', employeeCreatorLeft);
+
 }
+
+function employeeCreatorHovered() {
+    console.log('mouse enter');
+    this.classList.add('active');
+}
+
+function employeeCreatorLeft() {
+    this.classList.remove('active');
+}
+
+
 
 // creates a new employee using the inputs on the page
 function createEmployee() {
