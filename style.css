@@ -24,17 +24,19 @@ button {
     padding: 0px;
     background-color: rgb(182, 68, 40);
     border-style: none;
+    transition: .15s;
 }
 
 button:hover, button:focus {
-    transform: translateY(-2px);
+    transform: scale(1, 1.2);
+    /* transform: translateY(-2px); */
     box-shadow: 0px 2px 4px rgba(1, 1, 1, .4);
     color: rgb(255, 128, 24) !important;
     outline: 0px;
 }
 
 button:active {
-    transform: translateY(2px);
+    transform: translateY(1px);
     border-style: none;
 }
 
@@ -138,6 +140,10 @@ table {
     font-family: 'Fugaz One', cursive;
     font-size: 24px;
     text-shadow: 4px 4px 12px rgba(1, 1, 1, .4);
+}
+
+#total.overBudget {
+    color: red;
 }
 
 .salary {

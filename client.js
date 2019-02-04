@@ -120,5 +120,15 @@ function getMonthlyTotal() {
     for (let employee of employees) {
         yearlyTotal += Number(employee.salary);
     }
+
+    let monthly = yearlyTotal / 12;
+    let totalElement = $('#total');
+    console.log(totalElement[0]);
+    
+    if (monthly > 20000) {
+        totalElement[0].classList.add('overBudget');
+    }else {
+        totalElement[0].classList.remove('overBudget');
+    }
     return yearlyTotal / 12;
 }
